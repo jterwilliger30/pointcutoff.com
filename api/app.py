@@ -30,9 +30,9 @@ dict = {}
 
 for i in range(len(matches)):
     if len(matches[i]) == 13:
-        dict[matches[i][0]] = ("SGT Primary Zone: ",  matches[i][1]) , ("SGT Secondary Zone: ", matches[i][2]), ("SSG Primary Zone: ", matches[i][3]), ("SSG Secondary Zone: ", matches[i][4])
+        dict[matches[i][0]] = {"SGT PZ: ":  matches[i][1] , "SGT SZ: ": matches[i][2], "SSG PZ: ": matches[i][3], "SSG SZ: ": matches[i][4]}
     elif len(matches[i]) == 7:
-        dict[matches[i][0]] = (matches[i][1] , matches[i][1] , matches[i][2] , matches[i][2])
+        dict[matches[i][0]] = {"SGT PZ: ":  matches[i][1] , "SGT SZ: ": matches[i][1], "SSG PZ: ": matches[i][2], "SSG SZ: ": matches[i][2]}
 
 
 
@@ -44,26 +44,12 @@ for i in range(len(matches)):
 
 app = Flask(__name__, template_folder='./')
 
-mos = None
-
-messages = [] 
-            
-@app.route('/')
-def index():
-    return render_template('index.html', messages=messages)
-messages = []
-
-@app.route('/handle_data', methods=('GET','POST'))
+@app.route('/handle_data', methods=['GET', 'POST'])
 def handle_data():
-    mos = request.form['mos']
-    flag = False
-    if mos.upper() in dict:
-        messages.append(dict[mos.upper()])
-        flag = True
-    if not flag:
-        messages.append(['MOS not found...'])
-
-            
-    print(messages)
-    return redirect(url_for('index'));
+    json = request.get_json()
+    key = json['data']
+    try:
+        return dict[key.upper()]
+    except:
+        return
 
