@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Whatever</title>
+    <style>
+      .data {
+	  display: inline;
+      }
+      #num {
+	  color: red;
+      }
+      
+    </style>
+  </head>
+  <body>
+
+{% block content %}
+    
+    <form action="{{ url_for('handle_data') }}" method="post">
+        <label for="title">MOS:</label>
+        
+        <input type="text" name="mos"></input>
+                <button type="submit">Submit</button>
+    </form>
+{% endblock %}
+
+    {% for i in messages[-1] %}
+    <h2 class="data">{{ i[0] }}</h2>
+    <h2 class="data" id="num">{{ i[1] }}</h2>
+    <br>
+    {% endfor %}
+
+  </body>
+</html>
