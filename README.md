@@ -1,5 +1,5 @@
 # Summary
-This project was done as a favor to a friend. Apparently, the US Army uses a point system when considering enlisted soldiers for promotion to E-5/Sergeant and E-6/Staff Sergeant. In order to be eligible for promotion, you must meet a minimum point threshold specific to your MOS. These thresholds change monthly, and are published in PDF memorandums issued by the Secretary of the Army.
+This project was done as a favor to a friend. Apparently, the US Army uses a point system when considering enlisted soldiers for promotion to E-5/Sergeant and E-6/Staff Sergeant. In order to be eligible for promotion, you must meet a minimum point threshold specific to your MOS. These thresholds change monthly, and are published in PDF memorandums issued by U.S. ARMY HUMAN RESOURCES COMMAND.
 
 # Setup
 Download the prerequisites: python3 (flask, pdfminer.six), npm, yarn, and react. Run npm install to download the required node_modules. Then run 'yarn start' in the root directory, which will begin serving the frontend on port 3000. With another daemon run 'python3 -m flask run' in the /api directory, which will begin serving the backend on port 5000. The frontend will automatically proxy api requests to port 5000.
