@@ -37,6 +37,7 @@ function Create() {
 
         </input>
         <button type="submit">Submit</button>
+        <h1>Current results are for the month of <span class="month">March, 2023</span>.</h1>
         <p id="demo"></p>
         </form>
 
