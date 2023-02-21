@@ -37,8 +37,12 @@ function Create() {
 
         </input>
         <button type="submit">Submit</button>
-        <h1>Current results are for the month of <span class="month">March, 2023</span>.</h1>
+        <h1>Current results are for <span class="month">March, 2023</span>.</h1>
         <p id="demo"></p>
+	<p id="footer">
+	<a href="https://github.com/jterwilliger30/pointcutoff.com">GitHub Repo</a>  <br />
+	<a href="mailto:jterwilliger30@gmail.com">Email for questions & feature requests</a>
+	</p>
         </form>
 
         
