@@ -1,3 +1,5 @@
+<h1>www.pointcutoff.com</h1>
+
 # Summary
 This project was done as a favor to a friend. Apparently, the US Army uses a point system when considering enlisted soldiers for promotion to E-5/Sergeant and E-6/Staff Sergeant. In order to be eligible for promotion, you must meet a minimum point threshold specific to your MOS. These thresholds change monthly, and are published in PDF memorandums issued by U.S. ARMY HUMAN RESOURCES COMMAND.
 
