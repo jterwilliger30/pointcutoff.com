@@ -36,7 +36,8 @@ function Create() {
         >
 
         </input>
-        <button type="submit">Submit</button>
+            <button type="submit">Submit</button>
+	    <h2>PLEASE NOTE: Beginning 04/2023, Army HR changed the format of their PDFs, causing this webapp to no longer work... please check back soon.</h2>
         <h1>Current results are for <span class="month">April, 2023</span>.</h1>
         <p id="demo"></p>
 	<p id="footer">
