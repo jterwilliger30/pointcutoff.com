@@ -12,7 +12,7 @@ function Create() {
             var i
             var x = ''
             for (i in getResponse.data) {
-                x += "<h2>" + i + "<span class=\"nums\">" + ": " + getResponse.data[i] + "</span>" + "</h2>"
+                x += "<h2>" + i + ": " + "<span class=\"nums\">" + getResponse.data[i] + "</span>" + "</h2>"
             }
             console.log(x)
             document.getElementById('demo').innerHTML = x
