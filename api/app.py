@@ -1,6 +1,6 @@
 from flask import Flask, render_template, Response, request, redirect, url_for
 
-from parser.parse import Parse
+from classes.parse import Parse
 
 a = Parse("./pdfs/Apr23.pdf")
 a.read_pdf_pages([4,5,6], [7,8,9])
