@@ -38,7 +38,7 @@ class Parse:
             # Sets all 4 keys for each MOS
             self.dict[i[0]]["SGT PZ"] = i[1]    # SGT PZ
             self.dict[i[0]]["SGT SZ"] = i[2]    # SGT SZ
-            self.dict[i[0]]["SSG SZ"] = i[3]    # SSG PZ
-            self.dict[i[0]]["SSG PZ"] = i[4]    # SSG SZ
+            self.dict[i[0]]["SSG PZ"] = i[3]    # SSG PZ
+            self.dict[i[0]]["SSG SZ"] = i[4]    # SSG SZ
 
         return self.dict
