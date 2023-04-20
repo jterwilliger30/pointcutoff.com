@@ -20,18 +20,25 @@ class Parse:
                     line = line.replace("(SEE ", "(SEE")
                 if ")(" in line:
                     line = line.replace(")(", ") (")
+                
+                line = line.split(" ")
+
+                # Once divided into list by spaces, add the space back into (SEE XYZ)
+                for i in range(len(line)):
+                    if "(SEE" in line[i]:
+                        line[i] = line[i].replace("(SEE", "(SEE ")
 
                 self.SGT_SSG.append(line.split(" "))
 
     def create_mos_dict(self):
         for i in self.SGT_SSG:
-            # Declares sub-dictionaries for each MOS where all 4 values will be stored
+            # Declares sub-dictionaries for each MOS (i[0]) where all 4 values will be stored
             self.dict[i[0]] = {}
 
-            # Sets all 4 keys for each MOS, assuming order of SGT PZ, SGT SZ, SSG PZ, SSG SZ
-            self.dict[i[0]]["SGT PZ"] = i[1]
-            self.dict[i[0]]["SGT SZ"] = i[2]
-            self.dict[i[0]]["SSG SZ"] = i[3]
-            self.dict[i[0]]["SSG PZ"] = i[4]
+            # Sets all 4 keys for each MOS
+            self.dict[i[0]]["SGT PZ"] = i[1]    # SGT PZ
+            self.dict[i[0]]["SGT SZ"] = i[2]    # SGT SZ
+            self.dict[i[0]]["SSG SZ"] = i[3]    # SSG PZ
+            self.dict[i[0]]["SSG PZ"] = i[4]    # SSG SZ
 
         return self.dict
