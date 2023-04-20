@@ -35,28 +35,3 @@ class Parse:
             self.dict[i[0]]["SSG PZ"] = i[4]
 
         return self.dict
-
-        """
-
-        for i in range(len(self.SSG)):
-            self.SSG[i] = self.SSG[i].split(" ")
-
-            # If this MOS exists in the SSG list but not the SGT list...
-            if self.SSG[i][0] not in self.dict:
-                # Create a sub-dictionary for it and...
-                self.dict[self.SSG[i][0]] = {}
-
-                # Set the SSG keys to N/A
-                self.dict[self.SSG[i][0]]["SGT PZ"] = "N/A"
-                self.dict[self.SSG[i][0]]["SGT SZ"] = "N/A"
-
-            # For all MOS's in the SSG list, set the 2 SSG keys
-            self.dict[self.SSG[i][0]]["SSG PZ"] = self.SSG[i][1]
-            self.dict[self.SSG[i][0]]["SSG SZ"] = self.SSG[i][2]
-        """
-
-        
-        """ DEBUG PURPOSES ONLY
-        for key in self.dict:
-            print(f"{key} : {self.dict[key]}")
-        """
