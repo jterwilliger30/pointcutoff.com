@@ -6,40 +6,48 @@ class Parse:
         self.filename = filename
         self.SGT = []
         self.SSG = []
+
+        self.SGT_SSG = []
+
         self.dict = {}
 
     def read_pdf_pages(self, SGT_Pages, SSG_Pages):
         self.reader = PdfReader(self.filename)
-
-        for i in SGT_Pages:
-            self.SGT.append(self.reader.pages[i].extract_text())
-        for i in SSG_Pages:
-            self.SSG.append(self.reader.pages[i].extract_text())
+        
+        for i in range(len(self.reader.pages)):
+            self.SGT_SSG.append(self.reader.pages[i].extract_text())
 
     def regex_extraction(self):
         temp = []
-        for page_idx in range(len(self.SGT)):
-            self.SGT[page_idx] = self.SGT[page_idx].split('\n')
-        
-        for page_idx in range(len(self.SGT)):
-            for line in self.SGT[page_idx]:
-                if re.match(r'^\d{2}[A-Z]{1,3} {1,6}', line.strip()):
-                    temp.append(line.strip())
-        self.SGT = temp
+        for page_idx in range(len(self.SGT_SSG)):
+            self.SGT_SSG[page_idx] = self.SGT_SSG[page_idx].split('\n')
 
-        temp = []
-        for page_idx in range(len(self.SSG)):
-            self.SSG[page_idx] = self.SSG[page_idx].split('\n')
-        
-        for page_idx in range(len(self.SSG)):
-            for line in self.SSG[page_idx]:
-                if re.match(r'^\d{2}[A-Z]{1,3} {1,6}', line.strip()):
+        j=0
+        for i in self.SGT_SSG:
+            for line in i:
+                if re.match(r'^\d{2}[A-Z]{1,3} {1,6}', line):
                     temp.append(line.strip())
-        self.SSG = temp
+        
+        self.SGT_SSG = temp
         temp = []
         
     def create_mos_dict(self):
         self.regex_extraction()
+
+        for i in range(len(self.SGT_SSG)):
+            self.SGT_SSG[i] = " ".join(self.SGT_SSG[i].split())
+
+            if "(SEE" in self.SGT_SSG[i]:
+                self.SGT_SSG[i] = self.SGT_SSG[i].replace("(SEE ", "(SEE")
+
+            if ")(" in self.SGT_SSG[i]:
+                self.SGT_SSG[i] = self.SGT_SSG[i].replace(")(", ") (")
+
+
+            # YOU LEFT OFF HERE... trying to think of robust ways to fix lines that contain errors
+            self.SGT_SSG[i] = self.SGT_SSG[i].split(" ")
+
+            print(self.SGT_SSG[i])
 
         for i in range(len(self.SGT)):
             self.SGT[i] = self.SGT[i].split(" ")
