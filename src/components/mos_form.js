@@ -3,9 +3,12 @@ import axios from 'axios'
 
 function Create() {
     const [mos, setTitle] = useState('')
+    const [ac_agr, setSelector] =  useState('ac')
     const handleSubmit = (e) => {
         e.preventDefault()
-        const myParams = {data: mos}
+        const myParams = {data: mos, selector: ac_agr}
+
+        console.log(ac_agr);
 
         axios.post("handle_data", myParams).then((getResponse) => {
             console.log(getResponse.data);
@@ -27,6 +30,7 @@ function Create() {
     return (
         <form onSubmit={handleSubmit} method="post">
 
+
         <label>MOS:</label>
         <input
         type="text"
@@ -37,18 +41,17 @@ function Create() {
 
         </input>
             <button type="submit">Submit</button>
+        <select value={ac_agr} onChange={(e) => setSelector(e.target.value)} id="selector">
+            <option value="ac">Active Component</option>
+            <option value="agr">National Guard / Reserve</option>
+        </select> <hr />
         <h1>Current results are for <span class="month">April, 2023</span>.</h1>
         <p id="demo"></p>
 	<p id="footer">
 	<a href="https://github.com/jterwilliger30/pointcutoff.com">GitHub Repo</a>  <br />
 	<a href="mailto:jterwilliger30@gmail.com">Email for questions & feature requests</a>
 	</p>
-        </form>
-
-        
-    )
+        </form>)
        
-
-
 }
 export default Create;
