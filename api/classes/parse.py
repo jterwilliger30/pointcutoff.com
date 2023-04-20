@@ -28,7 +28,7 @@ class Parse:
                     if "(SEE" in line[i]:
                         line[i] = line[i].replace("(SEE", "(SEE ")
 
-                self.SGT_SSG.append(line.split(" "))
+                self.SGT_SSG.append(line)
 
     def create_mos_dict(self):
         for i in self.SGT_SSG:
