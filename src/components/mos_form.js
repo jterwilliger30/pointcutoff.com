@@ -1,9 +1,26 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import axios from 'axios'
 
 function Create() {
+
     const [mos, setTitle] = useState('')
     const [ac_agr, setSelector] =  useState('ac')
+
+    useEffect(() => {
+        axios.get("mos_list", {}).then((getResponse) => {
+            console.log(getResponse.data);
+            var i
+            var x = ''
+            for (i in getResponse.data) {
+                x += "<option value=\"" + getResponse.data[i] + "\">" + getResponse.data[i] + "</option>"
+            }
+            document.getElementById('mos_list').innerHTML = x;
+        }
+
+        )
+    },[]);
+        
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const myParams = {data: mos, selector: ac_agr}
@@ -32,15 +49,12 @@ function Create() {
 
 
         <label>MOS:</label>
-        <input
-        type="text"
-        value={mos}
-        required
-        onChange={(e) => setTitle(e.target.value)}
-        >
 
-        </input>
-            <button type="submit">Submit</button>
+        <select onChange={(e) => setTitle(e.target.value)} id="mos_list">
+            
+        </select>
+
+        <button type="submit">Submit</button>
         <select value={ac_agr} onChange={(e) => setSelector(e.target.value)} id="selector">
             <option value="ac">Active Component</option>
             <option value="agr">National Guard / Reserve</option>

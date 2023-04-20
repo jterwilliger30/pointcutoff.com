@@ -14,6 +14,22 @@ agr_dict = b.create_mos_dict()
 
 app = Flask(__name__, template_folder='./')
 
+@app.route('/mos_list', methods=['GET'])
+def get_list():
+    mos_list = []
+
+    for key in ac_dict:
+        if key not in mos_list:
+            mos_list.append(key)
+    
+    for key in agr_dict:
+        if key not in mos_list:
+            mos_list.append(key)
+    
+    mos_list.sort()
+
+    return mos_list
+
 @app.route('/handle_data', methods=['GET', 'POST'])
 def handle_data():
     json = request.get_json()
