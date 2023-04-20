@@ -34,6 +34,8 @@ class Parse:
             self.dict[i[0]]["SSG SZ"] = i[3]
             self.dict[i[0]]["SSG PZ"] = i[4]
 
+        return self.dict
+
         """
 
         for i in range(len(self.SSG)):
