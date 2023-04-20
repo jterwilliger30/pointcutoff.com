@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function Create() {
 
-    const [mos, setTitle] = useState('')
+    const [mos, setTitle] = useState('11b')
     const [ac_agr, setSelector] =  useState('ac')
 
     useEffect(() => {
