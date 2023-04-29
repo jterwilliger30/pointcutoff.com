@@ -32,14 +32,16 @@ class AC_Parse:
 
     def create_mos_dict(self):
         for i in self.SGT_SSG:
-            # Declares sub-dictionaries for each MOS (i[0]) where all 4 values will be stored
-            self.dict[i[0]] = {}
+            # Hopefully tosses garbage pulled in by the regex...
+            if len(i) > 4:
+                # Declares sub-dictionaries for each MOS (i[0]) where all 4 values will be stored
+                self.dict[i[0]] = {}
 
-            # Sets all 4 keys for each MOS
-            self.dict[i[0]]["SGT PZ"] = i[1]
-            self.dict[i[0]]["SGT SZ"] = i[2]
-            self.dict[i[0]]["SSG PZ"] = i[3]
-            self.dict[i[0]]["SSG SZ"] = i[4]
+                # Sets all 4 keys for each MOS
+                self.dict[i[0]]["SGT PZ"] = i[1]
+                self.dict[i[0]]["SGT SZ"] = i[2]
+                self.dict[i[0]]["SSG PZ"] = i[3]
+                self.dict[i[0]]["SSG SZ"] = i[4]
 
         return self.dict
     
