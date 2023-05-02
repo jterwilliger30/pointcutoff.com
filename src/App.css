@@ -23,3 +23,8 @@ body {
     margin-left: 5px;
 }
 
+#disclaimer {
+    position: fixed;
+    bottom: 0;
+    margin-left: 40%;
+}
