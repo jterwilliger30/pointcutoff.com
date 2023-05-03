@@ -65,7 +65,7 @@ function Create() {
 	<a href="https://github.com/jterwilliger30/pointcutoff.com">GitHub Repo</a>  <br />
 	<a href="mailto:jterwilliger30@gmail.com">Email for questions & feature requests</a>
 	</p>
-    <p id="disclaimer">This site is not affiliated with or a reflection on the Department of Defense.</p>
+    <h4 id="disclaimer">This site is not affiliated with or a reflection on the Department of Defense.</h4>
         </form>)
        
 }
