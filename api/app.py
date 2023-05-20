@@ -3,13 +3,20 @@ from flask import Flask, render_template, Response, request, redirect, url_for
 from classes.parse import AC_Parse, AGR_Parse
 
 # Set month to parse data from
-pdf_name = "May23.pdf"
+pdf_name = "Jun23.pdf"
 
 a = AC_Parse("./pdfs/ac/" + str(pdf_name))
 a.read_extract()
 ac_dict = a.create_mos_dict()
 
+""" Temporarily removed this for the month of June... AGR parsing seems to be the same as AC this month.
 b = AGR_Parse("./pdfs/agr/" + str(pdf_name))
+b.read_extract()
+agr_dict = b.create_mos_dict()
+"""
+
+# Added this temporarily:
+b = AC_Parse("./pdfs/agr/" + str(pdf_name))
 b.read_extract()
 agr_dict = b.create_mos_dict()
 
