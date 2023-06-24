@@ -28,3 +28,7 @@ body {
     margin-left: 40%;
     bottom: 3%;
 }
+
+center {
+    vertical-align: bottom;
+}

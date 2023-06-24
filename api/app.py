@@ -3,7 +3,7 @@ from flask import Flask, render_template, Response, request, redirect, url_for
 from classes.parse import AC_Parse, AGR_Parse
 
 # Set month to parse data from
-pdf_name = "Jun23.pdf"
+pdf_name = "Jul23.pdf"
 
 a = AC_Parse("./pdfs/ac/" + str(pdf_name))
 a.read_extract()
@@ -19,6 +19,9 @@ agr_dict = b.create_mos_dict()
 b = AC_Parse("./pdfs/agr/" + str(pdf_name))
 b.read_extract()
 agr_dict = b.create_mos_dict()
+
+for key in agr_dict:
+    print(f"{key}:\t {agr_dict}")
 
 app = Flask(__name__, template_folder='./')
 
