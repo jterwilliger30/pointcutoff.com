@@ -20,8 +20,6 @@ b = AC_Parse("./pdfs/agr/" + str(pdf_name))
 b.read_extract()
 agr_dict = b.create_mos_dict()
 
-for key in agr_dict:
-    print(f"{key}:\t {agr_dict}")
 
 app = Flask(__name__, template_folder='./')
 
