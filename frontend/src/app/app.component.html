@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item onClick="window.open('./army', '_self')">
+      <mat-icon svgIcon="army_icon"></mat-icon>
+      <span>Army</span>
+    </button>
+    <button mat-menu-item onClick="window.open('./airforce', '_self')">
+      <mat-icon svgIcon="airforce_icon"></mat-icon>
+      <span>Air Force</span>
+    </button>
+    <button mat-menu-item onClick="window.open('./navy', '_self')">
+      <mat-icon svgIcon="navy_icon"></mat-icon>
+      <span>Navy</span>
+    </button>
+    <button mat-menu-item onClick="window.open('./marinecorps', '_self')">
+      <mat-icon svgIcon="marinecorps_icon"></mat-icon>
+      <span>Marine Corps</span>
+    </button>
+    <button mat-menu-item onClick="window.open('./coastguard', '_self')">
+      <mat-icon svgIcon="coastguard_icon"></mat-icon>
+      <span>Coast Guard</span>
+    </button>
+  </mat-menu>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>android</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<h1>Current results are for: <span id="month" [innerHTML]="data_from_month"></span></h1>
+<router-outlet></router-outlet>

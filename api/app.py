@@ -1,60 +1,66 @@
 from flask import Flask, render_template, Response, request, redirect, url_for
 
-from classes.parse import AC_Parse, AGR_Parse
+import classes.army_parse as Army
 
 # Set month to parse data from
-pdf_name = "Jul23.pdf"
+pdf_name = "Aug23.pdf"
 
-a = AC_Parse("./pdfs/ac/" + str(pdf_name))
+a = Army.AC_Parse("./pdfs/ac/" + str(pdf_name), False)
 a.read_extract()
 ac_dict = a.create_mos_dict()
 
-""" Temporarily removed this for the month of June... AGR parsing seems to be the same as AC this month.
-b = AGR_Parse("./pdfs/agr/" + str(pdf_name))
-b.read_extract()
-agr_dict = b.create_mos_dict()
-"""
-
-# Added this temporarily:
-b = AC_Parse("./pdfs/agr/" + str(pdf_name))
+b = Army.AC_Parse("./pdfs/agr/" + str(pdf_name), False)
 b.read_extract()
 agr_dict = b.create_mos_dict()
 
 
 app = Flask(__name__, template_folder='./')
 
-@app.route('/mos_list', methods=['GET'])
+@app.route('/mos_list', methods=['GET', 'POST'])
 def get_list():
+
+    json = request.get_json()
+    choice = json['component_selector']
+
     mos_list = []
 
-    for key in ac_dict:
-        if key not in mos_list:
-            mos_list.append(key)
-    
-    for key in agr_dict:
-        if key not in mos_list:
-            mos_list.append(key)
+    if choice == 'ac':
+        for key in ac_dict:
+            if key not in mos_list:
+                mos_list.append(key)
+    elif choice == 'agr':
+        for key in agr_dict:
+            if key not in mos_list:
+                mos_list.append(key)
     
     mos_list.sort()
 
     return mos_list
 
-@app.route('/handle_data', methods=['GET', 'POST'])
+
+@app.route('/army_handle_data', methods=['GET', 'POST'])
 def handle_data():
     json = request.get_json()
 
-    key = json['data']
-    ac_agr = json['selector']
+    mos = json['mos']
+    choice = json['component_selector']
 
-    if ac_agr == "ac":
+    if choice == "ac":
         try:
-            return ac_dict[key.upper()]
+            return ac_dict[mos.upper()]
         except:
             return
-    elif ac_agr == "agr":
+    elif choice == "agr":
         try:
-            return agr_dict[key.upper()]
+            return agr_dict[mos.upper()]
         except:
             return
     else:
         return
+    
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+  return response
