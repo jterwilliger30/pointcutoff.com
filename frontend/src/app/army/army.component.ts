@@ -48,7 +48,6 @@ export class ArmyComponent {
   public onValChange(val: string) {
     this.selectedVal = val;
     this.get_MOS_List();
-    this.clear()
   }
 
   get_MOS_List()
@@ -59,14 +58,6 @@ export class ArmyComponent {
         this.filter();
        }
     );
-  }
-
-  public clear()
-  {
-    if (this.options.includes(this.input.toUpperCase()))
-    {
-      this.input = '';
-    }
   }
 
   public filter() {
