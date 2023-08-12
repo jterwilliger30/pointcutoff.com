@@ -11,8 +11,8 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./army.component.css']
 })
 export class ArmyComponent {
-  army_mos_list_url = "http://localhost:5001/mos_list";
-  army_points_url = "http://localhost:5001/army_handle_data";
+  army_mos_list_url = "mos_list";
+  army_points_url = "army_handle_data";
 
   selectedVal : string = '';
   filteredOptions : Observable<string[]>;
