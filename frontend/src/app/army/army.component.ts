@@ -37,8 +37,9 @@ export class ArmyComponent {
     this.http.post<string[]>(this.army_points_url, {mos: this.input, component_selector: this.selectedVal}).subscribe(
       (response)  => {
         this.data = response;
-        console.log(this.data);
         this.show_data = true;
+       }, (error) => {
+        this.show_data = false;
        }
     );
   }
@@ -47,6 +48,7 @@ export class ArmyComponent {
   public onValChange(val: string) {
     this.selectedVal = val;
     this.get_MOS_List();
+    this.clear()
   }
 
   get_MOS_List()
@@ -61,7 +63,10 @@ export class ArmyComponent {
 
   public clear()
   {
-    this.input = '';
+    if (this.options.includes(this.input.toUpperCase()))
+    {
+      this.input = '';
+    }
   }
 
   public filter() {

@@ -18,7 +18,7 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-button-toggle-group class="field" (change)="this.clear()" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
+  <mat-button-toggle-group class="field" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
     <mat-button-toggle value="ac">Active Component</mat-button-toggle>
     <mat-button-toggle value="agr">Active Guard Reserve</mat-button-toggle>
   </mat-button-toggle-group>
