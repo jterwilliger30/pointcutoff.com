@@ -1,13 +1,13 @@
 <form>
   <mat-form-field>
     <mat-label>MOS</mat-label>
-    <input type="text"
+    <input
+        type="text"
         placeholder="Enter your MOS"
         aria-label="Number"
         matInput
         [(ngModel)]="input"
         (click)="this.filter()"
-        (change)="this.clear()"
         [formControl]="control"
         [matAutocomplete]="auto">
 
@@ -18,12 +18,12 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-button-toggle-group #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
+  <mat-button-toggle-group class="field" (change)="this.clear()" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
     <mat-button-toggle value="ac">Active Component</mat-button-toggle>
     <mat-button-toggle value="agr">Active Guard Reserve</mat-button-toggle>
   </mat-button-toggle-group>
 
-  <button mat-raised-button color="primary" type="button" (click)="this.get_MOS_points()">Submit</button>
+  <button mat-raised-button class="field" color="primary" type="button" (click)="this.get_MOS_points()">Submit</button>
 </form>
 <hr>
 
