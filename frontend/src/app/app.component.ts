@@ -11,7 +11,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class AppComponent {
   title = 'frontend';
-  data_from_month = "August";
+  data_from_month = "September";
 
   constructor(
     private matIconRegistry: MatIconRegistry,

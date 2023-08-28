@@ -3,7 +3,7 @@ from flask import Flask, render_template, Response, request, redirect, url_for
 import classes.army_parse as Army
 
 # Set month to parse data from
-pdf_name = "Aug23.pdf"
+pdf_name = "Sep23.pdf"
 
 a = Army.AC_Parse("./pdfs/ac/" + str(pdf_name), False)
 a.read_extract()
